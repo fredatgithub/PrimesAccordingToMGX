@@ -48,7 +48,7 @@ namespace PrimeNumberCalculator
       return limit;
     }
 
-    private static void DisplayResults(List<int> primes)
+    private static void DisplayResultsOld1(List<int> primes)
     {
       Console.WriteLine($"\nFound {primes.Count} prime numbers:");
 
@@ -56,6 +56,35 @@ namespace PrimeNumberCalculator
       for (int i = 0; i < primes.Count; i++)
       {
         Console.Write($"{primes[i],5}");
+
+        if ((i + 1) % numbersPerLine == 0 || i == primes.Count - 1)
+        {
+          Console.WriteLine();
+        }
+      }
+    }
+
+    private static void DisplayResults(List<int> primes)
+    {
+      Console.WriteLine($"\nFound {primes.Count} prime numbers:");
+
+      // Determine the width needed for the largest prime number
+      int fieldWidth = 1;
+      if (primes.Count > 0)
+      {
+        // Get the largest prime (last in the list) and calculate its digit length
+        int largestPrime = primes[primes.Count - 1];
+        fieldWidth = largestPrime.ToString().Length;
+
+        // Add 2 for padding (at least 1 space between numbers)
+        fieldWidth += 2;
+      }
+
+      const int numbersPerLine = 10;
+      for (int i = 0; i < primes.Count; i++)
+      {
+        // Use the dynamic field width for better alignment
+        Console.Write($"{primes[i],0}".PadRight(fieldWidth));
 
         if ((i + 1) % numbersPerLine == 0 || i == primes.Count - 1)
         {

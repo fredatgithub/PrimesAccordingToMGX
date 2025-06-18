@@ -49,3 +49,6 @@ test-results/
 pnpm-lock.yaml
 *.pyc
 __pycache__
+/.vs/PrimeNumberCalculator/CopilotIndices/17.14.734.62261
+/.vs/PrimeNumberCalculator/FileContentIndex
+/.vs/PrimeNumberCalculator/v17
